@@ -1,6 +1,3 @@
-/*
-Distance Vector Routing in this program is implemented using Bellman Ford Algorithm:-
-*/
 #include<stdio.h>
 struct node
 {
@@ -21,19 +18,19 @@ int main()
             scanf("%d",&costmat[i][j]);
             costmat[i][i]=0;
             rt[i].dist[j]=costmat[i][j];
-            printf("\n dist %d",rt[i].dist[j]);
+            printf("rt[%d].dist[%d] = %d ",i,j,rt[i].dist[j]);
             rt[i].from[j]=j;
+            printf("rt [%d].from[%d] = %d",i,j,rt[i].from[j]);
         }
     }
         do
         {
             count=0;
-            for(i=0;i<nodes;i++)//We choose arbitary vertex k and we calculate the direct distance from the node i to k using the cost matrix
-            //and add the distance from k to node j
+            for(i=0;i<nodes;i++)
             for(j=0;j<nodes;j++)
             for(k=0;k<nodes;k++)
                 if(rt[i].dist[j]>costmat[i][k]+rt[k].dist[j])
-                {//We calculate the minimum distance
+                {
                     rt[i].dist[j]=rt[i].dist[k]+rt[k].dist[j];
                     rt[i].from[j]=k;
                     count++;
@@ -49,4 +46,4 @@ int main()
         }
     printf("\n\n");
 }
-    //getch(); }
+    
